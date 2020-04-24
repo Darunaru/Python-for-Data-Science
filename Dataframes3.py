@@ -65,3 +65,30 @@ KM and HP have different datatypes as we have negelected ?? in the seconnd read 
 1st code is incorrect as it is not object datatype
 
 """
+print("\n \n")
+# CONVERTING VARIABLE'S DATATYPES : 
+
+cars1.MetColor=cars1.MetColor.astype('object')  # The datatype is converted to object
+print(cars1.info())
+
+print(cars1['FuelType'].nbytes)             # When Fuel type is object - memory : 11488
+
+print("\n\n")
+print(cars1['FuelType'].astype('category').nbytes)  # When Fuel type is converted from object to category - memory : 1460
+
+#CLEANING COLUMN 'Doors'
+
+print(np.unique(cars1.Doors))    #to get unique values
+
+cars1['Doors'].replace('three',3,inplace=True)
+
+cars1['Doors'].replace('four',4,inplace=True)    # to replace string to number
+cars1['Doors'].replace('five',5,inplace=True)
+
+cars1.Doors=cars1.Doors.astype('int64')    # to convert to int64 to avoid confusion
+print(cars1.info())
+
+
+# # TO DETECT MISSING VALUES
+print("\n\n")
+print(cars1.isnull().sum())  # To check the count of missing values present in each column
