@@ -141,3 +141,42 @@ while i<len(cars1['Price']):
 print("\n\n")
 print(cars1.Price_class.value_counts())         # Returns series containing count of unique values
 print("\n\n")
+
+# FUNCTIONS
+
+# To convert Age variable from months to Years
+
+cars1.insert(11,"Age_converted",0)              # creates a new column with values 0
+
+#commented BECAUSE TO SHOW MULTIPLE INPUT FUNCTIONS
+# def converted_age(value):                       # FUnction to convert months to years    
+    
+    # value=value/12
+    # return value
+
+    
+# cars1.Age_converted=converted_age(cars1.Age)    # passing AGE values to function
+# cars1.Age_converted=round(cars1.Age_converted,1) # Roundoff
+
+
+
+""" FUNCTION WITH MULTIPLE INPUTS AND  OUTPUTS """
+
+""" 1) Converting the Age variable from months to years and getting kilometers(KM)
+        run per month
+    
+    2) The converted values of kilometer will be stored in a new colum "km_per_month"
+    
+"""
+
+cars1.insert(12,"km_per_month",0)    
+
+def c_convert(val1,val2):
+    new_age=val1/12
+    ratio=val2/val1  # convert km runs per month
+    return [new_age,ratio]
+
+
+cars1.Age_converted,cars1.km_per_month=c_convert(cars1.Age,cars1.KM) 
+
+print(cars1.head())
